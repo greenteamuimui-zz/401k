@@ -22,7 +22,7 @@ Feel free to email me at [paul@captain401.com](paul@captain401.com) if you have 
   % git checkout -b new-branch-name
   ```
 
-1. Complete the project as described below within your local repository. Plese commit as often as you can.
+1. Complete the project as described below within your local repository. Please commit as often as you can.
 1. Zip up this entire directory
   ```bash
   % cd ..
@@ -47,14 +47,14 @@ These funds are then used to buy shares in market-based assets like stocks and m
 
 Write a simple program that does the following:
 
-Phase 1:
+### Phase 1:
 1. Read the payroll file `payroll_631fa526.csv`, and the census file `census_1498456690.csv`.
 1. Output the amount of money contributed by each person for this payroll. (Note the `contribution_rate_pct` column in the census file)
 
-Phase 2:
+### Phase 2:
 1. Output the employer match dollar amount (Note `match_rate_pct` in census), and then sum the amount matched by the company for all the employees (so we know how much to charge them).
 
-Phase 3:
+### Phase 3:
 1. For each participant's risk setting (in the census), buy the appropriate shares of funds using `risk_symbol.csv` and `symbol_price.csv` with the funds from this payroll (and the company matched funds!)
 1. Output the shares, money amount, % bought of the funds, and the participant's portfolio value.
 
