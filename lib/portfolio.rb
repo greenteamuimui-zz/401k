@@ -1,23 +1,32 @@
-class Employee
-  attr_reader :f_name, :l_name, :risk
+class Portfolio
+  attr_reader :symbol_price_hash, :risk_hash
 
-  def initialize(options = {})
-    @f_name = options[:f_name]
-    @l_name = options[:l_name]
-    @ssn = options[:ssn]
-    @gross = options[:gross]
-    @personal_contribution = options[:personal_contribution]
-    @match_contribution = options[:match_contribution]
-    @risk = options[:risk]
-    calculate_personal_contribution
-    calculate_company_contribution
+  def initialize(risk_symbol_location, symbol_price_location)
+    risk_symbol_array = CSV.read("#{risk_symbol_location.chomp}")
+    symbol_price_array = CSV.read("#{symbol_price_location.chomp}")
+    @symbol_price_hash = hash_symbol_price(symbol_price_array)
+    @risk_hash = hash_portfolio_split(risk_symbol_array)
   end
 
-  def calculate_personal_contribution
-    (@personal_contribution.to_f/100.00) * @gross.to_f
+
+  private
+  def hash_symbol_price(symbol_price_array)
+    price_hash = Hash.new
+    symbol_price_array[1..-1].each do |row|
+      price_hash[row[0]] = row[-1]
+    end
+    price_hash
   end
 
-  def calculate_company_contribution
-    (@match_contribution.to_f/100.00) * @gross.to_f
+  def hash_portfolio_split(risk_symbol_array)
+    risk_split_hash = Hash.new
+    # Creating a hash with the risk factor being the key and the shares name
+    # and percentages as another hash with name => percentage
+    risk_symbol_array[1..-1].each do |row|
+      risk_factor = row[0]
+      risk_split_hash[risk_factor] = Hash.new unless risk_split_hash[row[0]]
+      risk_split_hash[risk_factor][row[1]] = row[2]
+    end
+    risk_split_hash
   end
 end
