@@ -16,7 +16,9 @@ class Portfolio
       shares_value = total * (v.to_f/100.00)
       raise "Price is missing" unless @symbol_price_hash[k]
       number_of_shares = shares_value/(@symbol_price_hash[k].to_f)
-      portfolio.push([k,'%.2f' % shares_value, v,'%.2f' % number_of_shares])
+      # I made the assumption that partial shares is allowed and wasn't
+      # quite sure what "portfolio value" meant the total of the portfolio
+      portfolio.push([k,'%.2f' % shares_value, v,'%.2f' % number_of_shares, total])
     end
     portfolio
   end

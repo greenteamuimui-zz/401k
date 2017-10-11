@@ -73,9 +73,9 @@ class PayrollSystem
     names.push(employee.f_name)
     all_portfolios.push(portfolio)
   end
-  format = '%-7s %-12s %-12s %-15s'
+  format = '%-7s %-12s %-12s %-15s %-15s'
   puts @payroll_date
-  puts format % ["Fund", "Total-Value","% bonds","Num-of-Shares"]
+  puts format % ["Fund", "Total-Value","% bonds","Num-of-Shares", "Portfolio Total"]
   all_portfolios.each_with_index do |data, i|
     puts names[i]
     data.each do |column_data|
