@@ -62,6 +62,28 @@ class PayrollSystem
     print "The total company contribution is #{'%.2f' % total}\n"
   end
 
+  def print_all_payroll_employees_portfolio
+  all_portfolios = []
+  names = []
+  portfolio_service = Portfolio.new("data/risk_symbol.csv", "data/symbol_price.csv")
+  @employees_on_payroll.each do |employee|
+    total = employee.calculate_personal_contribution + employee.calculate_company_contribution
+    risk = employee.risk
+    portfolio = portfolio_service.employee_portfolio(risk, total)
+    names.push(employee.f_name)
+    all_portfolios.push(portfolio)
+  end
+  format = '%-7s %-12s %-12s %-15s'
+  puts @payroll_date
+  puts format % ["Fund", "Total-Value","% bonds","Num-of-Shares"]
+  all_portfolios.each_with_index do |data, i|
+    puts names[i]
+    data.each do |column_data|
+      puts format % column_data
+    end
+  end
+end
+
   private
   # This method creates a census hash with the unique SSN for each employee
   # as the key and the values is an array with the contribution percentages and
@@ -83,3 +105,9 @@ class PayrollSystem
   end
 
 end
+
+demo = PayrollSystem.new
+demo.run("data/payroll_631fa526.csv","data/census_1498456690.csv")
+demo.print_employees_contriubutions
+demo.print_total_company_contribution
+demo.print_all_payroll_employees_portfolio
