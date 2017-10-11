@@ -1,0 +1,10 @@
+require_relative 'lib/payroll_system'
+
+payroll_system = PayrollSystem.new
+payroll_file_location, census_file_location = ARGV
+payroll_system.run(payroll_file_location, census_file_location)
+payroll_system.print_employees_contriubutions
+puts
+payroll_system.print_total_company_contribution
+puts
+payroll_system.print_all_payroll_employees_portfolio

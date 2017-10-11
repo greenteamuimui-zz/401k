@@ -23,7 +23,7 @@ describe Portfolio do
 
   describe '#employee_portfolio' do
     it "calculate the portfolio using risk and total and returns a array of arrays with each share's info" do
-      expect(portfolio.employee_portfolio(1, 1000)).to eq([["VFIAX", "300.00", "30", "28.79"], ["VTSAX", "300.00", "30", "14.84"], ["VGSLX", "400.00", "40", "336.13"]])
+      expect(portfolio.employee_portfolio(1, 1000)).to eq([["VFIAX", "300.00", "30", "28.79", "1000"], ["VTSAX", "300.00", "30", "14.84", "1000"], ["VGSLX", "400.00", "40", "336.13", "1000"]])
     end
   end
 

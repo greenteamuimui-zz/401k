@@ -105,11 +105,3 @@ end
   end
 
 end
-
-demo = PayrollSystem.new
-demo.run("data/payroll_631fa526.csv","data/census_1498456690.csv")
-demo.print_employees_contriubutions
-puts
-demo.print_total_company_contribution
-puts
-demo.print_all_payroll_employees_portfolio
