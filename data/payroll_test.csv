@@ -1,0 +1,5 @@
+pay_date,pay_period_start,pay_period_end,report_date,payroll_cycle_type
+05-15-2017,05-01-2017,05-15-2017,05-20-2017,on_cycle
+
+first_name,last_name,payroll_id,ssn,date_of_birth,date_of_hire,hours,gross
+Jenny,"Nguyen, esq",arbitraryString,222222222,1947-08-12,2017-01-01,88.88,5000
