@@ -8,6 +8,19 @@ class Portfolio
     @risk_hash = hash_portfolio_split(risk_symbol_array)
   end
 
+  def employee_portfolio(risk, total)
+    portfolio = []
+    risk = risk.to_s
+    selected_risk_hash = @risk_hash[risk]
+    selected_risk_hash.each do |k,v|
+      shares_value = total * (v.to_f/100.00)
+      raise "Price is missing" unless @symbol_price_hash[k]
+      number_of_shares = shares_value/(@symbol_price_hash[k].to_f)
+      portfolio.push([k,'%.2f' % shares_value, v,'%.2f' % number_of_shares])
+    end
+    portfolio
+  end
+
 
   private
   def hash_symbol_price(symbol_price_array)
