@@ -54,6 +54,14 @@ class PayrollSystem
     end
   end
 
+  def print_total_company_contribution
+    total = 0
+    @employees_on_payroll.each do |employee|
+      total += employee.calculate_company_contribution
+    end
+    print "The total company contribution is #{'%.2f' % total}\n"
+  end
+
   private
   # This method creates a census hash with the unique SSN for each employee
   # as the key and the values is an array with the contribution percentages and
