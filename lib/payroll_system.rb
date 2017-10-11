@@ -43,6 +43,17 @@ class PayrollSystem
     end
   end
 
+  def print_employees_contriubutions
+    display = {}
+    @employees_on_payroll.each do |employee|
+      name = employee.f_name.concat(' ').concat(employee.l_name)
+      display[name] = employee.calculate_personal_contribution
+    end
+    display.each do |k,v|
+      print "#{k}'s personal contribution for the month is #{'%.2f' % v}\n"
+    end
+  end
+
   private
   # This method creates a census hash with the unique SSN for each employee
   # as the key and the values is an array with the contribution percentages and
